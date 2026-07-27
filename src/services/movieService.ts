@@ -6,7 +6,7 @@ interface fetchMovieProps {
   page?: number;
 }
 
-interface fetchMovieRespons {
+interface fetchMovieResponse {
   page: number;
   results: Movie[];
   total_pages: number;
@@ -16,9 +16,9 @@ interface fetchMovieRespons {
 export default async function fetchMovie({
   query,
   page = 1,
-}: fetchMovieProps): Promise<fetchMovieRespons> {
+}: fetchMovieProps): Promise<fetchMovieResponse> {
   const token = import.meta.env.VITE_TMDB_TOKEN;
-  const response = await axios.get<fetchMovieRespons>(
+  const response = await axios.get<fetchMovieResponse>(
     "https://api.themoviedb.org/3/search/movie",
     {
       params: {
