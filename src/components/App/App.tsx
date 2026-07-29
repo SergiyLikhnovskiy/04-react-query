@@ -40,10 +40,10 @@ function App() {
     setPage(1);
   };
 
-  const onOpenModule = (movie: Movie) => {
+  const onOpenModal = (movie: Movie) => {
     setSelectedMovie(movie);
   };
-  const onCloseModule = () => {
+  const onCloseModal = () => {
     setSelectedMovie(null);
   };
 
@@ -56,7 +56,7 @@ function App() {
   return (
     <>
       {selectedMovie && (
-        <MovieModal onClose={onCloseModule} movie={selectedMovie} />
+        <MovieModal onClose={onCloseModal} movie={selectedMovie} />
       )}
       <Toaster />
       <SearchBar onSubmit={searchMovie} />
@@ -77,10 +77,9 @@ function App() {
       {isLoading ? (
         <Loader />
       ) : (
-        <MovieGrid movies={movieResponse} onSelect={onOpenModule} />
+        <MovieGrid movies={movieResponse} onSelect={onOpenModal} />
       )}
     </>
   );
 }
-console.log(typeof ReactPaginate);
 export default App;
